@@ -1,0 +1,12 @@
+{
+  "name": "Projeto Accounts Nodejs",
+  "version": "1.0.0",
+  "description": "projeto para fins de estudo com nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Fabio Carneiro <https://github.com/fabioaacarneiro/accounts-node>",
+  "license": "ISC"
+}

@@ -4,6 +4,6 @@ projeto para fins de estudo com nodejs
 
 <div align="center">
 
-![Imagem de exemplo do projeto]("https://github.com/fabioaacarneiro/accounts-node/blob/master/img/img1.png")
+<img width="400" title="Imagem de exemplo do projeto" src="https://github.com/fabioaacarneiro/accounts-node/blob/master/img/img1.png" />
 
 </div>

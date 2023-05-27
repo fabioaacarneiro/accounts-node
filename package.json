@@ -1,12 +1,18 @@
 {
-  "name": "Projeto Accounts Nodejs",
+  "name": "accounts_nodejs",
   "version": "1.0.0",
   "description": "projeto para fins de estudo com nodejs",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "Fabio Carneiro <https://github.com/fabioaacarneiro/accounts-node>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "inquirer": "^9.2.6"
+  }
 }

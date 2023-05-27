@@ -21,6 +21,13 @@ const operation = () => {
         const action = answer['action']
 
         if (action == "Criar Conta") createAccount()
+        if (action == "Consultar Salcdo") //
+        if (action == "Fazer Depósito") //
+        if (action == "Fazer um Saque") //
+        if (action == "Sair") {
+            console.log(chalk.bgBlue.black("Obrigado por usar o Accounts"))
+            process.exit()
+        }
 
     }).catch((err) => console.log(err))
 }

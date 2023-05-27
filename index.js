@@ -23,13 +23,13 @@ const operation = () => {
         if (action == "Criar Conta") {
             createAccount()
         } else if (action == "Consultar Saldo") {
-            
+            getAccountBalance()
         } else if (action == "Fazer Depósito")  {
             deposit()
         } else if (action == "Fazer um Saque") {
             //
         } else if (action == "Sair") {
-            console.log(chalk.bgBlue.black("Obrigado por usar o Accounts"))
+            console.log(chalk.bgBlue.black.bold("Obrigado por usar o Accounts"))
             process.exit()
         }
 
@@ -38,8 +38,8 @@ const operation = () => {
 
 //create an account
 const createAccount = () => {
-    console.log(chalk.bgGreen.black("Parabéns por escolher o nosso banco!"))
-    console.log(chalk.green("Defina as opções da sua conta a seguir"))
+    console.log(chalk.bgGreen.bold("Parabéns por escolher o nosso banco!"))
+    console.log(chalk.green.bold("Defina as opções da sua conta a seguir"))
     buildAccount()
 }
 
@@ -56,7 +56,7 @@ const buildAccount = () => {
         }
         
         if(fs.existsSync(`accounts/${accountName}.json`)) {
-            console.log(chalk.bgRed.black("Esta conta já existe, use outro nome"))
+            console.log(chalk.bgRed.bold("Esta conta já existe, use outro nome"))
             buildAccount()
             return
         }
@@ -97,7 +97,7 @@ const deposit = () => {
 
 const checkAccount = (accountName) => {
     if(!fs.existsSync(`accounts/${accountName}.json`)) {
-        console.log(chalk.bgRed.black("Esta conta não existe!"))
+        console.log(chalk.bgRed.bold("Esta conta não existe!"))
         return false
     }
     return true
@@ -107,7 +107,7 @@ const addAmmount = (accountName, amount) => {
     const accountData = getAccount(accountName)
     
     if (!amount) {
-        console.log(chalk.bgRed("Ocorreu um erro, tente outra vez mais tarde"))
+        console.log(chalk.bgRed.bold("Ocorreu um erro, tente outra vez mais tarde"))
         return deposit()
     }
 
@@ -117,7 +117,7 @@ const addAmmount = (accountName, amount) => {
         console.log(err)
     })
 
-    console.log(chalk.green(`Foi depositado o valor R$${amount} em sua conta!`))
+    console.log(chalk.green.bold(`Foi depositado o valor R$${amount} em sua conta!`))
 }
 
 const getAccount = (accountName) => {
@@ -127,6 +127,26 @@ const getAccount = (accountName) => {
     })
 
     return JSON.parse(accountJSON)
+}
+
+const getAccountBalance = () => {
+    inquirer.prompt([{
+        name: "accountName",
+        message: "Qual o nome da sua conta"
+    }]).then((answer) => {
+        const accountName = answer["accountName"]
+
+        // verify is account exist
+        if (!checkAccount(accountName)) {
+            return getAccountBalance()
+        }
+
+        const accountData = getAccount(accountName)
+
+        console.log(chalk.bgBlue.bold(`Olá, o Saldo em sua conta é de R$${accountData.balance}`))
+        operation()
+        
+    }).then((err) => console.log(err))
 }
 
 operation()
